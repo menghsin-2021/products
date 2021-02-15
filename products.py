@@ -11,6 +11,7 @@ with open('products.csv', 'r', encoding = 'utf-8') as f:
 		products.append([name, price])
 print(products)
 
+# 讓使用者輸入
 while True:
     name = input('請輸入商品名稱: ')
     if name == 'q':
@@ -25,10 +26,12 @@ while True:
 print(products)
 print(products[0][0])
 
+# 印出所有購買紀錄
 for p in products:
 	print(p)
 	print(p[0], '的價格是', p[1])
 
+# 寫入檔案
 with open('products.txt', 'w', encoding = 'utf-8') as f: #我只需要用 f 來稱呼這個檔案
 	f.write('product,price\n')
 	for p in products:
