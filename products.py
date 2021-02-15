@@ -1,4 +1,16 @@
+# 讀取檔案
+# .strip() 把尾巴換行去掉
+# .split(',') 用逗點切割 切割完的結果為清單
 products = []
+with open('products.csv', 'r', encoding = 'utf-8') as f:
+	for line in f:
+		if 'product,price' in line:
+			continue  #只能寫在迴圈裡 跳到下一迴
+		name, price = line.strip().split(',')
+		print(name, price)
+		products.append([name, price])
+print(products)
+
 while True:
     name = input('請輸入商品名稱: ')
     if name == 'q':
@@ -18,12 +30,12 @@ for p in products:
 	print(p[0], '的價格是', p[1])
 
 with open('products.txt', 'w', encoding = 'utf-8') as f: #我只需要用 f 來稱呼這個檔案
-	f.write('商品, 價格\n')
+	f.write('product,price\n')
 	for p in products:
 		f.write(p[0] + ',' + str(p[1]) + '\n') # 加起來會成為同一字串
 
 with open('products.csv', 'w',  encoding = 'utf-8') as f: #我只需要用 f 來稱呼這個檔案
-	f.write('商品, 價格\n')
+	f.write('product,price\n')
 	for p in products:
 		f.write(p[0] + ',' + str(p[1]) + '\n') 
 		# 加起來會成為同一字串
